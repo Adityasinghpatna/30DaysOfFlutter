@@ -9,9 +9,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: Mydrawer(),
       appBar:AppBar(
-        title: Text("Catalog App"),
-        
-      ),
+        title: Text("Catalog App",
+        style: TextStyle(color: Colors.black), ),
+         ),
         body:Center(
           child:Container(
           child:Text("Welcome to $days days of flutter by $name"),
