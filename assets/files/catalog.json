@@ -1,12 +1,12 @@
 {
-    "products" :[
+    "products": [
         {
             "id": 1,
             "name": "Redmi note 5 pro",
             "desc": "Redmi note 5 pro 9th generation",
             "price": 999,
             "color": "#33505a",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://i.picsum.photos/id/1012/3973/2639.jpg?hmac=s2eybz51lnKy2ZHkE2wsgc6S81fVD1W2NKYOSh8bzDc"
         },
         {
             "id": 2,
@@ -14,7 +14,7 @@
             "desc": "Google Pixel phone 5th generation",
             "price": 699,
             "color": "#00ac51",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://picsum.photos/id/237/200/300"
         },
         {
             "id": 3,
@@ -22,7 +22,7 @@
             "desc": "Apple Macbook air with apple silicon",
             "price": 1099,
             "color": "#e0bfae",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://picsum.photos/200/300?grayscale"
         },
         {
             "id": 4,
@@ -30,7 +30,7 @@
             "desc": "Sony Playstation 5th generation",
             "price": 500,
             "color": "#544ee4",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://i.picsum.photos/id/1003/1181/1772.jpg?hmac=oN9fHMXiqe9Zq2RM6XT-RVZkojgPnECWwyEF1RvvTZk"
         },
         {
             "id": 5,
@@ -38,7 +38,7 @@
             "desc": "Apple Airpods Pro 1st generation",
             "price": 200,
             "color": "#e3e4e9",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://i.picsum.photos/id/1/5616/3744.jpg?hmac=kKHwwU8s46oNettHKwJ24qOlIAsWN9d2TtsXDoCWWsQ"
         },
         {
             "id": 6,
@@ -46,23 +46,23 @@
             "desc": "Apple iPad Pro 2020 edition",
             "price": 799,
             "color": "#f73984",
-            "image": "https://picsum.photos/200/300"
-        },  
+            "image": "https://i.picsum.photos/id/1001/5616/3744.jpg?hmac=38lkvX7tHXmlNbI0HzZbtkJ6_wpWyqvkX4Ty6vYElZE"
+        },
         {
             "id": 7,
             "name": "Galaxy S21 Ultra",
             "desc": "Samsung Galaxy S21 Ultra 2021 edition",
             "price": 1299,
             "color": "#1c1c1c",
-            "image": "https://picsum.photos/200/300"
-        }, 
+            "image": "https://i.picsum.photos/id/1004/5616/3744.jpg?hmac=Or7EJnz-ky5bsKa9_frdDcDCR9VhCP8kMnbZV6-WOrY"
+        },
         {
             "id": 8,
             "name": "Galaxy S21",
             "desc": "Samsung Galaxy S21 2021 edition",
             "price": 899,
             "color": "#7c95eb",
-            "image": "https://picsum.photos/200/300"
+            "image": "https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y"
         }
     ]
 }
