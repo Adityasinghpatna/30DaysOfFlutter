@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/cart.dart';
 import 'package:flutter_application_1/pages/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -26,13 +27,13 @@ class CartPage extends StatelessWidget {
 class _CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel? _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${_cart.totalPrice}"
+          "\$${_cart!.totalPrice}"
               .text
               .xl5
               .color(context.theme.accentColor)
@@ -56,10 +57,11 @@ class _CartTotal extends StatelessWidget {
 }
 
 class _CartList extends StatelessWidget{
-  final _cart = CartModel();
+ 
   @override
   Widget build(BuildContext context) {
-    return _cart.items.isEmpty
+   final CartModel? _cart = (VxState.store as MyStore).cart;
+    return _cart!.items.isEmpty
         ? "Nothing to show".text.xl3.makeCentered()
         : ListView.builder(
             itemCount: _cart.items.length,
