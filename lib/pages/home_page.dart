@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/store.dart';
 import 'package:flutter_application_1/models/cart.dart';
@@ -21,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   final String name = "ADITYA";
 
-  final Url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
+  final Url = "https://api.jsonbin.io/v3/b/62fb48ebe13e6063dc7d5975";
 
   @override
   void initState() {
@@ -30,19 +29,34 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 2));
-    // final catalogJson =
-        // await rootBundle.loadString("assets/files/catalog.json");
+    try {
+      //await Future.delayed(Duration(seconds: 2));
+      // final catalogJson =
+      // await rootBundle.loadString("assets/files/catalog.json");
 
-    final response = await http.get(Uri.parse(Url));
-    final catalogJson = response.body;
+      final response = await http.get(Uri.parse(Url), headers: {
+        "X-Access-Key":
+            "\$2b\$10\$gPiPGsoH.ikKcWTJITRyyeArOwdnlD1oqSlv5KxcKrROCn3FOmGXu"
+      }).catchError((error) {
+        print(error);
+      });
+      print(response.body);
+      final catalogJson = response.body;
 
-    final decodeData = jsonDecode(catalogJson);
-    var productsData = decodeData["products"];
-    CatalogModel.items = List.from(productsData)
-        .map<Item>((item) => Item.fromMap(item))
-        .toList();
-    setState(() {});
+      final decodeData = jsonDecode(catalogJson);
+      if (decodeData.containsKey("record")) { 
+        final recordData = decodeData["record"];
+        if (recordData.containsKey("products")) {
+          var productsData = recordData["products"];
+          CatalogModel.items = List.from(productsData)
+              .map<Item>((item) => Item.fromMap(item))
+              .toList();
+          setState(() {});
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
@@ -52,19 +66,21 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: context.canvasColor,
         floatingActionButton: VxBuilder(
           mutations: {AddMutation, RemoveMutation},
-          builder: (ctx,_,__) => FloatingActionButton(
+          builder: (ctx, _, __) => FloatingActionButton(
             onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
             backgroundColor: context.backgroundColor,
             child: Icon(
               CupertinoIcons.cart,
               color: Colors.white,
             ),
-          ).badge(color: Vx.gray200, size: 22,
-           count: _cart!.items.length,
-           textStyle: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-           )),
+          ).badge(
+              color: Vx.gray200,
+              size: 22,
+              count: _cart!.items.length,
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              )),
         ),
         body: SafeArea(
           child: Container(
@@ -77,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                     CatalogModel.items!.isNotEmpty)
                   CatalogList().py16().expand()
                 else
-                   CircularProgressIndicator().centered().expand(),
+                  CircularProgressIndicator().centered().expand(),
               ],
             ),
           ),
